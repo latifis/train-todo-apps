@@ -9,8 +9,8 @@
 
     <title>Document</title>
 </head>
-<body>
-  <%= JSON.stringify(items) %> 
+<body> 
+
   <nav>
     <div class="nav-wrapper container">
       <a href="/" class="brand-logo">CRUD</a>
@@ -25,14 +25,19 @@
     <ul class="collection with-header">
     
         <% if (items.length>0){ %>
-          <li class="collection-item">
-            <div>items<a href="#!" 
-            class="secondary-content"><i 
-            class="material-icons">send</i></a>
-            </div>
-          </li>
+          
+            <% items.forEach(item => { %>
+              <li class="collection-item">
+                <div><%= item.name %> $<%= item.price %><a href="#!" 
+                  class="secondary-content"><i 
+                  class="material-icons">delete</i><i 
+                  class="material-icons">edit</i></a>
+                </div>
+              </li>
+            <% });%>
+          
         <% }else{ %>
-          <li>There no items</li>  
+          <li>There are no items</li>  
         <% } %>
       
       </ul>
