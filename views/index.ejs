@@ -10,25 +10,35 @@
     <title>Document</title>
 </head>
 <body>
-    <nav>
-        <div class="nav-wrapper container">
-          <a href="/" class="brand-logo">CRUD</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/add-item">Add Item</a></li>
-            
-          </ul>
-        </div>
-      </nav>
+  <%= JSON.stringify(items) %> 
+  <nav>
+    <div class="nav-wrapper container">
+      <a href="/" class="brand-logo">CRUD</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/add-item">Add Item</a></li>
+        
+      </ul>
+    </div>
+  </nav>
 
-      <div class="container">
-        <ul class="collection with-header">
-          <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-          <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-          <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-          <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
-        </ul>
-      </div>
+  <div class="container">
+    <ul class="collection with-header">
+    
+        <% if (items.length>0){ %>
+          <li class="collection-item">
+            <div>items<a href="#!" 
+            class="secondary-content"><i 
+            class="material-icons">send</i></a>
+            </div>
+          </li>
+        <% }else{ %>
+          <li>There no items</li>  
+        <% } %>
+      
+      </ul>
+  </div>
 
       
 </body>
 </html>
+
