@@ -38,6 +38,12 @@ app.get("/items/:id", (req,res)=>{
         res.render('item-detail', {item: result})
     })
 })
+app.delete("/items/:id", (req,res)=>{
+    const id = req.params.id;
+    Item.findByIdAndDelete(id).then(result=>{
+        res.redirect('/get-items')
+    })
+})
 app.use((req,res)=>{
     res.render('error')
 })
