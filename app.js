@@ -11,29 +11,13 @@ mongoose.connect(mongodb).then(()=>
 app.set('view engine', 'ejs')
 app.listen(3000);
 
-app.get('/create-item', (req,res)=>{
-    const item = new Item({
-        name:'cocmputer',
-        price:2000
-    })
-    item.save().then(result=>res.send(result)).catch(err=>console.log(err))
+app.get('/',(req,res)=>{
+    res.redirect('/get-items');
 })
 app.get('/get-items', (req,res)=>{
-    
-    Item.find().then(result=>res.send(result)).catch(err=>console.log(err))
-})
-app.get('/get-item', (req,res)=>{
-    
-    Item.findById('61e125d1cba5e7826b8262e3').then(result=>res.send(result)).catch(err=>console.log(err))
-})
-
-app.get('/',(req,res)=>{
-    const items = [
-        {name: 'mobile phone', price: 1000},
-        {name: 'book', price: 30},
-        {name: 'computer', price: 2000},
-    ]
-    res.render('index', {items:items});
+    Item.find().then(result=>{
+        res.render('index', {items:result});
+    }).catch(err=>console.log(err))
 })
 app.get('/add-item',(req,res)=>{
     res.render('add-item')
