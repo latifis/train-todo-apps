@@ -44,6 +44,12 @@ app.delete("/items/:id", (req,res)=>{
         res.json({redirect:'/get-items'})
     })
 })
+app.put("/items/:id", (req,res)=>{
+    const id = req.params.id;
+    Item.findByIdAndUpdate(id, req.body).then(result=>{
+        res.json({msg: 'Update Successfully'})
+    })
+})
 app.use((req,res)=>{
     res.render('error')
 })
