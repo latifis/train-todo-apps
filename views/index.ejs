@@ -17,7 +17,7 @@
                 <div><a href="/items/<%= item.id %>"><%= item.name %> $<%= item.price %></a><a href="#!" 
                   class="secondary-content"><i 
                   class="material-icons">delete</i><i 
-                  class="material-icons">edit</i></a>
+                  class="material-icons modal-trigger" href="#edit-item_modal">edit</i></a>
                 </div>
               </li>
             <% });%>
@@ -29,6 +29,25 @@
       </ul>
   </div>
 
+  <div id="edit-item_modal" class="modal">
+    <div class="modal-content">
+      <h4>Edit Form</h4>
+      <form id="edit_form" action="">
+        <input type="text" name="name" placeholder="item name">
+        <input type="number" name="price" placeholder="item name">
+        <button class="btn">update</button>
+      </form>
+    </div>
+    
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(elems);
+    });
+  </script>
       
 </body>
 </html>
